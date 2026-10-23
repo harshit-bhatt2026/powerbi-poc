@@ -1,0 +1,85 @@
+table Details
+	lineageTag: 219a96c5-148a-4d3c-992d-e24b6338e0d9
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: ca5d39f8-4685-4617-aab9-b8522219f925
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a642d7a-f658-4dda-a0f0-fb1c60efbdb0
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: int64
+		formatString: 0
+		lineageTag: d99ce7d0-7769-419b-a2b2-da454491eb4c
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: ab0c22d9-2ccc-47b4-8c02-99afd5d6a6ab
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: dc979fd6-d84b-42f2-830a-07249e502e9e
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: 9fcb1b15-08fd-40eb-a2fb-81d835984c7e
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentMode
+		dataType: string
+		lineageTag: 3212d595-b222-4dd9-8fb7-56090826c2e3
+		summarizeBy: none
+		sourceColumn: PaymentMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AOV = [Amount]/[Quantity]
+		dataType: int64
+		lineageTag: 1bb483c2-e1c4-4f1c-a8f3-0a4afb050cba
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Details = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\HarshitBhatt\Downloads\Details.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Amount", Int64.Type}, {"Profit", Int64.Type}, {"Quantity", Int64.Type}, {"Category", type text}, {"Sub-Category", type text}, {"PaymentMode", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

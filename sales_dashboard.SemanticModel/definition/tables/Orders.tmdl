@@ -1,0 +1,63 @@
+table Orders
+	lineageTag: 98119857-b068-497e-a306-2e70fddd3c3b
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 5f86451b-0c51-4baa-a854-e145fc5f841d
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 60de56bd-fcea-4b06-bc67-8ff10bea0931
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		variation Variation
+			isDefault
+			relationship: 764e0444-cd77-441e-a5c8-271a113aca1c
+			defaultHierarchy: LocalDateTable_e20975c5-e63a-462c-bc11-f8a92a4acc9a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerName
+		dataType: string
+		lineageTag: 80767b0b-bd43-46fd-a42f-fb37599ff8b8
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 0d7334e4-67a1-45d9-a025-97deb7e7e818
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 3b2d46fd-5ff0-424b-bbb6-c6f5a0d878f8
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\HarshitBhatt\Downloads\Orders.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"CustomerName", type text}, {"State", type text}, {"City", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

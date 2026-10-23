@@ -1,0 +1,9 @@
+relationship 764e0444-cd77-441e-a5c8-271a113aca1c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Order Date'
+	toColumn: LocalDateTable_e20975c5-e63a-462c-bc11-f8a92a4acc9a.Date
+
+relationship AutoDetected_21580a10-da7c-4a46-8272-486d55f61539
+	fromColumn: Details.'Order ID'
+	toColumn: Orders.'Order ID'
+
