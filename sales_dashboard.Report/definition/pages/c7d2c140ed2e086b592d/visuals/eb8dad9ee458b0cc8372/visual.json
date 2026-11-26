@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "eb8dad9ee458b0cc8372",
   "position": {
     "x": 194.04862169633398,
     "y": 101.19099904410055,
+=======
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "eb8dad9ee458b0cc8372",
+  "position": {
+    "x": 267.55688434594549,
+    "y": 101.45172917321305,
+>>>>>>> c72358f5ae1953b3e723cd30eaef231d0413572c
     "z": 7000,
     "height": 121.66666666666667,
     "width": 163.33333333333334,
