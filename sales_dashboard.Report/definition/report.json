@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.4.0/schema.json",
-=======
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
->>>>>>> c72358f5ae1953b3e723cd30eaef231d0413572c
   "themeCollection": {
     "baseTheme": {
       "name": "CY26SU05",
@@ -74,10 +70,6 @@
     "allowChangeFilterTypes": true,
     "useEnhancedTooltips": true,
     "useDefaultAggregateDisplayName": true
-<<<<<<< HEAD
   },
   "linguisticSchemaSyncVersion": 2
-=======
-  }
->>>>>>> c72358f5ae1953b3e723cd30eaef231d0413572c
 }
