@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "0ac4bab0587aa0905528",
   "position": {
-    "x": 83.333333333333343,
-    "y": 21.666666666666668,
+    "x": 391.11111111111109,
+    "y": 23.111111111111111,
     "z": 0,
     "height": 61.666666666666671,
     "width": 581.66666666666674,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "ECOMMERCE SALES DEMO DASHBOARD",
+                    "value": "ECOMMERCE SALES DASHBOARD",
                     "textStyle": {
                       "fontSize": "20pt"
                     }
